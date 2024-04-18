@@ -6,13 +6,13 @@ import UserInfo from '@/components/UserInfo'
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function LeidingInfo() {
+export default function ActiviteitInfo() {
 
     const router = useRouter();
     const { id } = router.query;
 
     // TODO: here: check creator of activiteit
-    // TEMP stub TODO: move temp stub to api route
+    // TEMP stub TODO: move temp stub to api
     const user = { 
         totem: "Slechtvalk",
         img_url: "https://wouw.org/sites/default/files/styles/profile_pic/public/pictures/picture-711-1696513984.jpg",

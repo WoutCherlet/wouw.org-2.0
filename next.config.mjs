@@ -8,7 +8,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'wouw.org',
         port: '',
-        pathname: '/sites/default/files/styles/profile_pic/public/pictures/**',
+        pathname: '/sites/default/files/**',
       },
     ],
   },

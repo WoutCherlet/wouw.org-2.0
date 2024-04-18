@@ -1,7 +1,6 @@
-
 import Navigation from '@/components/Navigation'
 
-export default function Leiding() {
+export default function Nieuws() {
     return (
         <main
           className="flex min-h-screen flex-col items-center justify-between p-6"
@@ -10,7 +9,7 @@ export default function Leiding() {
             <Navigation></Navigation>
           </div>
           <p className= "text-center lg:max-w-5xl lg:w-full m-auto">
-            Lijst van leiding hier, vraag met getServerSideProps
+            Lijst van nieuwsberichten hier, vraag met getServerSideProps
           </p>
         </main>
       );
