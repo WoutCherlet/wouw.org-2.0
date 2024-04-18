@@ -12,7 +12,7 @@ export default function LeidingInfo() {
     const { id } = router.query;
 
     // TODO: here: check creator of activiteit
-    // TEMP stub
+    // TEMP stub TODO: move temp stub to api route
     const user = { 
         totem: "Slechtvalk",
         img_url: "https://wouw.org/sites/default/files/styles/profile_pic/public/pictures/picture-711-1696513984.jpg",
