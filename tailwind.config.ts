@@ -12,6 +12,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'footer-bg': "url('/images/footer_bg.jpg')",
+        "footer-top": "url('/images/footer.jpg')",
+        "bg_main": "url('/images/bg_main.jpg')",
       },
     },
   },

@@ -10,7 +10,7 @@ export default function Navigation() {
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <a href="/">
-              <img src={"/logo_wouw.png"} alt="Logo" />
+              <img src={"/images/logo_wouw.png"} alt="Logo" />
               </a>
               <div className="md:hidden">
                 <button

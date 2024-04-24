@@ -5,7 +5,7 @@ export default function NieuwsPagina({ item, user }) {
 
     return (
         <> 
-            <div className="flex items-center m-auto">
+        <div className="flex items-center m-auto">
             <div className="w-1/3 ">
                 <UserInfo user = { user }></UserInfo>
             </div>

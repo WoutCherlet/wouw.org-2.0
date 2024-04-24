@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,8 @@ Maecenas pellentesque sagittis auctor. Suspendisse finibus lectus id arcu bibend
 
 Duis tincidunt enim nisi, viverra vulputate nisl egestas vitae. Sed placerat eget lacus vel gravida. Suspendisse nec iaculis sapien. Quisque fermentum ligula eu euismod rhoncus. Aenean non massa lobortis, elementum sem interdum, consequat quam. Quisque consectetur vitae sem eu fermentum. Pellentesque ullamcorper justo et orci euismod iaculis. Maecenas bibendum purus ligula, id rutrum lectus ornare sit amet. Ut a sodales libero. Etiam mi metus, lobortis eget velit id, maximus interdum mauris.
       </p>
+      <Footer></Footer>
+
     </main>
   );
 }
