@@ -19,28 +19,28 @@ export default function UserPage({ user }) {
                         { user.totem }
                     </div>
                     <div className="font-bold">
-                        Adjectief:
+                        Adjectief: TODO: make optional, for people that dont have one
                     </div>
                     <div>
-                        { user.adjectief }
+                        { user.adjective }
                     </div>
                     <div className="font-bold">
                         Naam:
                     </div>
                     <div>
-                        { user.naam }
+                        { user.firstname } { user.lastname }
                     </div>
                     <div className="font-bold">
                         Tak:
                     </div>
                     <div>
-                        { user.tak }
+                        TODO: tak not returned in api/leiding/slug (maybe not necessary here as its shown on takken pagina)
                     </div>
                     <div className="font-bold">
                         Functie:
                     </div>
                     <div>
-                        { user.functie }
+                        TODO: functie not returned in api/leiding/slug (maybe not necessary here as its shown on takken pagina)
                     </div>
                 </div>
                 <div className="w-1/2">

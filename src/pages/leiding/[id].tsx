@@ -2,21 +2,10 @@ import { useRouter } from 'next/router'
 import Navigation from '@/components/Navigation'
 import UserPage from '@/components/UserPage'
 
-export default function LeidingInfo() {
+export default function LeidingInfo({ leiding }) {
 
     const router = useRouter();
     const { id } = router.query;
-
-    // TODO: here: check creator of activiteit
-    // TEMP stub TODO: move temp stub to api route
-    const user = { 
-        totem: "Slechtvalk",
-        img_url: "https://wouw.org/sites/default/files/styles/profile_pic/public/pictures/picture-711-1696513984.jpg",
-        adjectief: "Vitale",
-        naam: "Wout Cherlet",
-        tak: "Verkenners",
-        functie: "Assistent-takleider"
-    };
 
     return (
         <main
@@ -26,59 +15,68 @@ export default function LeidingInfo() {
           <Navigation></Navigation>
         </div>
         <div className="flex items-center m-auto">
-            <UserPage user = { user }></UserPage>
+            <UserPage user = { leiding }></UserPage>
         </div>
       </main>
     )
 }
 
 
-// Workflow voor server side rendering:
-/*
 
-export async function getServerSideProps({ params }) {
-    const req = await fetch(api/${params.id}.json);
-    const data = await req.json();
-
-    return {
-        props: { car: data },
-    }
-}
-
-*/
-
-// Workflow voor static generation:
-
-/*
-
-TODO: deze function fixt data van de api
+// TODO: deze function fixt data van de api
 
 export async function getStaticProps({ params }) {
-    const req = await fetch(api/${params.id}.json);
+    const req = await fetch('https://wouw.noshit.be/api/leiding/'+params.id);
     const data = await req.json();
 
     return {
-        props: { car: data },
+        props: { leiding: data },
     }
 
 }
 
 
-TODO: deze function geeft een lijst van alle ids van leiding door, zodat next die kan pre renderen
+// TODO: deze function geeft een lijst van alle ids van leiding door, zodat next die kan pre renderen
 
 export async function getStaticPaths() {
 
-    const req = await fetch(api/leiding.json);
-    const data = await req.json();
+    // TODO: find way to get all in one api call, now api returns hydra views
 
-    const paths = data.map(person => {
-        return { params: {id: person } }
+    const req1 = await fetch("https://wouw.noshit.be/api/leiding?page=1");
+    const takken1 = await req1.json();
+    var leiding_arr = takken1["hydra:member"]
+    const req2 = await fetch("https://wouw.noshit.be/api/leiding?page=2");
+    const takken2 = await req2.json();
+    var leiding_arr = leiding_arr.concat(takken2["hydra:member"])
+    const req3 = await fetch("https://wouw.noshit.be/api/leiding?page=3");
+    const takken3 = await req3.json();
+    var leiding_arr = leiding_arr.concat(takken3["hydra:member"])
+    const req4 = await fetch("https://wouw.noshit.be/api/leiding?page=4");
+    const takken4 = await req4.json();
+    var leiding_arr = leiding_arr.concat(takken4["hydra:member"])
+    const req5 = await fetch("https://wouw.noshit.be/api/leiding?page=5");
+    const takken5 = await req5.json();
+    var leiding_arr = leiding_arr.concat(takken5["hydra:member"])
+
+    // const takken = [takken1, takken2, takken3, takken4, takken5]
+
+    // console.log(takken)
+
+    // let leiding_arr = [];
+    // for (const tak in takken) {
+    //     leiding_arr = leiding_arr.concat(tak["hydra:member"])
+    // }
+
+    console.log(leiding_arr)
+
+    const paths = leiding_arr.map(leiding => {
+        return { params: {id: leiding.slug } }
     })
+
+    console.log(paths)
 
     return {
         paths,
         fallback:false
     }
 }
-
-*/

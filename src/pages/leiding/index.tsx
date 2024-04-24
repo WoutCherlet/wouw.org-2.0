@@ -1,10 +1,10 @@
 
 import Navigation from '@/components/Navigation'
+import TakList from '@/components/TakList'
+import { Tajawal } from 'next/font/google';
 
-export default function Leiding({ leiding }) {
-
-    console.log(leiding)
-    const leiding_list = leiding["hydra:member"]
+export default function Leiding({ takken }) {
+    const takken_list = takken["hydra:member"]
 
     return (
         <main
@@ -13,14 +13,10 @@ export default function Leiding({ leiding }) {
           <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
             <Navigation></Navigation>
           </div>
-          <p className= "text-center lg:max-w-5xl lg:w-full m-auto">
-            Lijst van leiding hier, vraag met getServerSideProps
-          </p>
-          <ul>
-            {leiding_list.map((leider) => (
-              <li>{leider.totem}</li>
-            ))}
-          </ul>
+
+          {takken_list.map((tak) => (
+            <TakList key={tak.name} takname={tak.name} takleiding={tak.leiding}></TakList>
+          ))}
         </main>
       );
 }
@@ -28,17 +24,20 @@ export default function Leiding({ leiding }) {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
+// TODO: getServerSideProps instead? for dynamic content
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://wouw.noshit.be/api/leiding')
-  const leiding = await res.json()
+  const res = await fetch('https://wouw.noshit.be/api/takken')
+  const takken = await res.json()
+
+  console.log(res.status)
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      leiding,
+      takken,
     },
   }
 }
