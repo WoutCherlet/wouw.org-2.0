@@ -4,6 +4,7 @@ import TakList from '@/components/TakList'
 import { Tajawal } from 'next/font/google';
 
 export default function Leiding({ takken }) {
+
     const takken_list = takken["hydra:member"]
 
     return (
@@ -30,8 +31,6 @@ export async function getStaticProps() {
   // You can use any data fetching library
   const res = await fetch('https://wouw.noshit.be/api/takken')
   const takken = await res.json()
-
-  console.log(res.status)
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time

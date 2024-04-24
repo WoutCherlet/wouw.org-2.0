@@ -58,22 +58,9 @@ export async function getStaticPaths() {
     const takken5 = await req5.json();
     var leiding_arr = leiding_arr.concat(takken5["hydra:member"])
 
-    // const takken = [takken1, takken2, takken3, takken4, takken5]
-
-    // console.log(takken)
-
-    // let leiding_arr = [];
-    // for (const tak in takken) {
-    //     leiding_arr = leiding_arr.concat(tak["hydra:member"])
-    // }
-
-    console.log(leiding_arr)
-
     const paths = leiding_arr.map(leiding => {
         return { params: {id: leiding.slug } }
     })
-
-    console.log(paths)
 
     return {
         paths,
